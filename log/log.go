@@ -2,15 +2,15 @@
 package log
 
 import (
-  "fmt"
-  "io"
-  "net/http"
-  "time"
-  "strings"
+	"fmt"
+	"io"
+	"net/http"
+	"strings"
+	"time"
 )
 
 const (
-    FormatPattern = "%s - - [%s] \"%s %d %d\" %f\n"
+	FormatPattern = "%s - - [%s] \"%s %d %d\" %f\n"
 )
 
 type LogRecord struct {

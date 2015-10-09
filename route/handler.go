@@ -4,13 +4,11 @@ import (
 	"net/http"
 )
 
-
 type HoardHandler struct {
 	http.Handler
 }
 
 func (_ *HoardHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
-
 
 	switch r.Method {
 
@@ -22,4 +20,3 @@ func (_ *HoardHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 	}
 }
-

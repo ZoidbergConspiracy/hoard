@@ -1,18 +1,17 @@
 package auth
 
 import (
-	"io"
 	"fmt"
+	"io"
 	"net/http"
 )
 
 type AuthHandler struct {
-        handler http.Handler
-        out     io.Writer
+	handler http.Handler
+	out     io.Writer
 }
 
 func (h *AuthHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
-
 
 	if cs := r.TLS; len(cs.PeerCertificates) != 0 {
 		for _, crt := range cs.PeerCertificates {
@@ -27,11 +26,9 @@ func (h *AuthHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 }
 
-
 func NewAuthHandler(handler http.Handler, out io.Writer) http.Handler {
 	return &AuthHandler{
 		handler: handler,
 		out:     out,
 	}
 }
-

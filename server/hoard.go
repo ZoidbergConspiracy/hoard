@@ -1,15 +1,14 @@
 package main
 
 import (
+	"crypto/tls"
 	"fmt"
-	"os"
-		"crypto/tls"
 	"net/http"
+	"os"
 
-	"github.com/zoidbergconspiracy/hoard/route"
-	"github.com/zoidbergconspiracy/hoard/log"
 	"github.com/zoidbergconspiracy/hoard/auth"
-	
+	"github.com/zoidbergconspiracy/hoard/log"
+	"github.com/zoidbergconspiracy/hoard/route"
 )
 
 func main() {
@@ -18,7 +17,7 @@ func main() {
 
 	srv := &http.Server{
 		Addr:    "0.0.0.0:9443",
-		Handler: log.NewLoggingHandler( auth.NewAuthHandler(&hoard, os.Stderr), os.Stdout),
+		Handler: log.NewLoggingHandler(auth.NewAuthHandler(&hoard, os.Stderr), os.Stdout),
 	}
 
 	tlsConfig := &tls.Config{}
@@ -28,5 +27,3 @@ func main() {
 	fmt.Println(srv.ListenAndServeTLS("server.crt", "server.key"))
 
 }
-
-
