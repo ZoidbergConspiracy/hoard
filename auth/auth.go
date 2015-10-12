@@ -19,6 +19,8 @@ func (h *AuthHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			fmt.Fprintf(h.out, "Subject Names: %v\n", crt.Subject.Names)
 			fmt.Fprintf(h.out, "Extra Names: %v\n", crt.Subject.ExtraNames)
 			fmt.Fprintf(h.out, "Signature: %X\n", crt.Signature)
+			fmt.Fprintf(h.out, "Signature: %X\n", crt.SignatureAlgorithm)
+			fmt.Fprintf(h.out, "KeyID: %X\n", crt.SubjectKeyId)
 		}
 	}
 
